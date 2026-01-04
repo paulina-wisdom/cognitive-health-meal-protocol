@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>A Meal Protocol for Cognitive Health</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --ink: #1a1a1a;
+      --paper: #f8f6f1;
+      --cream: #FFFDF9;
+      --forest: #2d4a3e;
+      --forest-light: #3d5a4e;
+      --warm: #8b4513;
+      --gold: #9C8A5E;
+      --subtle: #6b6b6b;
+      --highlight: #f0f5f2;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Page structure */
+    .page {
+      min-height: 100vh;
+      padding: 4rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+
+    .page-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* Cover */
+    .cover {
+      background: var(--ink);
+      color: var(--paper);
+      text-align: center;
+      padding: 6rem 2rem;
+    }
+
+    .cover-title {
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .cover-subtitle {
+      font-size: clamp(1.1rem, 3vw, 1.4rem);
+      font-weight: 300;
+      font-style: italic;
+      max-width: 500px;
+      margin: 0 auto 3rem;
+      line-height: 1.6;
+      opacity: 0.85;
+    }
+
+    .cover-details {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.6;
+      margin-top: 4rem;
+    }
+
+    .cover-ornament {
+      width: 60px;
+      height: 1px;
+      background: var(--paper);
+      margin: 2rem auto;
+      opacity: 0.4;
+    }
+
+    /* Decorative elements */
+    .page-number {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--subtle);
+    }
+
+    /* Typography */
+    h2 {
+      font-size: clamp(1.8rem, 5vw, 2.4rem);
+      color: var(--forest);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+      font-weight: 400;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      color: var(--ink);
+      margin: 2rem 0 0.75rem;
+      font-weight: 500;
+    }
+
+    p {
+      margin-bottom: 1.25rem;
+      font-size: 1.1rem;
+    }
+
+    /* Element pages */
+    .element-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      border-bottom: 2px solid var(--forest);
+      padding-bottom: 1rem;
+    }
+
+    .element-number {
+      font-family: 'Space Mono', monospace;
+      font-size: 2.5rem;
+      color: var(--forest);
+      opacity: 0.3;
+      line-height: 1;
+    }
+
+    .element-title {
+      font-size: clamp(1.6rem, 4vw, 2rem);
+      color: var(--forest);
+      font-weight: 400;
+    }
+
+    /* Pull quotes */
+    .pull-quote {
+      font-size: 1.4rem;
+      font-style: italic;
+      color: var(--forest);
+      border-left: 3px solid var(--gold);
+      padding-left: 1.5rem;
+      margin: 2rem 0;
+      line-height: 1.5;
+    }
+
+    /* Protocol boxes */
+    .protocol-box {
+      background: var(--highlight);
+      border: 1px solid rgba(45, 74, 62, 0.15);
+      padding: 1.5rem 2rem;
+      margin: 1.5rem 0;
+      position: relative;
+    }
+
+    .protocol-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--forest);
+    }
+
+    .protocol-box h4 {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--forest);
+      margin-bottom: 0.75rem;
+    }
+
+    .protocol-box p {
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .protocol-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* References */
+    .reference {
+      font-size: 0.8rem;
+      color: var(--subtle);
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .reference ol {
+      margin: 0;
+      padding-left: 1.25rem;
+    }
+
+    .reference li {
+      margin-bottom: 0.35rem;
+      line-height: 1.4;
+    }
+
+    .reference li:last-child {
+      margin-bottom: 0;
+    }
+
+    sup {
+      font-size: 0.65em;
+      color: var(--forest);
+      font-weight: 600;
+    }
+
+    /* Menu page */
+    .menu-page {
+      background: var(--forest);
+      color: var(--paper);
+    }
+
+    .menu-page h2 {
+      color: var(--paper);
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .menu-course {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .menu-course-name {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .menu-course-desc {
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--paper);
+      line-height: 1.6;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .menu-divider {
+      width: 30px;
+      height: 1px;
+      background: var(--gold);
+      margin: 2rem auto;
+      opacity: 0.5;
+    }
+
+    .menu-page .page-number {
+      color: var(--gold);
+    }
+
+    /* Ingredients grid */
+    .ingredient-section {
+      margin: 2rem 0;
+    }
+
+    .ingredient-category {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--forest);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(45, 74, 62, 0.2);
+    }
+
+    .ingredient {
+      margin-bottom: 1.25rem;
+    }
+
+    .ingredient-name {
+      font-size: 1.15rem;
+      color: var(--forest);
+      margin-bottom: 0.25rem;
+      font-weight: 500;
+    }
+
+    .ingredient-benefit {
+      font-size: 0.95rem;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 3rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0.5rem;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--forest), var(--gold));
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.65rem;
+      top: 0.5rem;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--forest);
+    }
+
+    .timeline-time {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--gold);
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-event {
+      font-size: 1rem;
+      color: var(--ink);
+    }
+
+    /* Closing page */
+    .closing-page {
+      background: var(--cream);
+      text-align: center;
+    }
+
+    .closing-list {
+      text-align: left;
+      max-width: 420px;
+      margin: 2rem auto;
+    }
+
+    .closing-list li {
+      font-size: 1.15rem;
+      color: var(--ink);
+      margin-bottom: 1rem;
+      padding-left: 1.5rem;
+      position: relative;
+      list-style: none;
+    }
+
+    .closing-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55rem;
+      width: 6px;
+      height: 6px;
+      background: var(--forest);
+      border-radius: 50%;
+    }
+
+    .closing-quote {
+      font-size: clamp(1.3rem, 4vw, 1.7rem);
+      font-style: italic;
+      color: var(--forest);
+      max-width: 500px;
+      margin: 3rem auto;
+      line-height: 1.4;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .footer-text {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    /* Photo styles */
+    .page-photo {
+      width: 100%;
+      margin: 2rem 0;
+      position: relative;
+    }
+
+    .page-photo img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .page-photo-full {
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .page-photo-full img {
+      width: 100%;
+      height: auto;
+      display: block;
+      max-height: 70vh;
+      object-fit: cover;
+    }
+
+    .photo-page {
+      padding: 0;
+      min-height: auto;
+    }
+
+    .photo-page img {
+      width: 100%;
+      height: 100vh;
+      object-fit: cover;
+    }
+
+    .photo-caption {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--subtle);
+      text-align: center;
+      margin-top: 0.75rem;
+      text-transform: uppercase;
+    }
+
+    /* Photo grid for closing */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .photo-grid img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    /* Print styles */
+    @media print {
+      .page {
+        page-break-after: always;
+        min-height: auto;
+        padding: 2cm;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .page {
+        padding: 3rem 1.5rem;
+      }
+      
+      .element-header {
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+      
+      .element-number {
+        font-size: 1.8rem;
+      }
+      
+      .timeline {
+        padding-left: 2rem;
+      }
+      
+      .timeline::before {
+        left: 0.25rem;
+      }
+      
+      .timeline-item::before {
+        left: -1.9rem;
+      }
+
+      .photo-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .meta-note {
+      font-size: 0.95rem;
+      opacity: 0.85;
+      margin-top: -0.5rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .reference-list {
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    .reference-list li {
+      margin-bottom: 0.6rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Cover -->
+<section class="page cover">
+  <div class="cover-ornament"></div>
+  <h1 class="cover-title">A Meal Protocol<br/>for Cognitive Health</h1>
+  <p class="cover-subtitle">Designing a brain-healthy brunch through current science, and traditional wisdom</p>
+  <div class="cover-ornament"></div>
+  <p class="cover-details">Sandbox · Winter 2025</p>
+</section>
+
+<!-- Hero Photo: Overhead table -->
+<section class="photo-page">
+  <img src="DSCF6958.JPG" alt="Overhead view of the table setting with dishes and guests"/>
+</section>
+
+<!-- Introduction -->
+<section class="page">
+  <div class="page-inner">
+    <h2>The Premise</h2>
+    <p>This meal guide is designed around what modern science and century-old wisdom both tell us: that nourishment begins before the first bite and extends beyond the last.</p>
+    <p>Every element, from the temperature of the room, the texture and colours of the food, the pace between courses, the quality of our conversation influences how we receive and digest what we eat.</p>
+    <p>What follows is a protocol, a way of eating that treats cognitive health as something we can practice.</p>
+  </div>
+  <span class="page-number">1</span>
+</section>
+
+<!-- Element 1: Social Eating -->
+<section class="page">
+  <div class="page-inner">
+    <div class="element-header">
+      <span class="element-number">01</span>
+      <span class="element-title">Social Eating</span>
+    </div>
+
+    <p>A 2025 study found that individuals who frequently eat alone have reduced brain volumes in regions critical for cognitive function: the hippocampus and medial temporal lobe.<sup>1</sup> The difference disappeared when accounting for diet quality.</p>
+
+    <p>In a large population study, solitary eating was associated with reduced brain volume, and the difference was attenuated after accounting for diet quality implying that what (and how well) we eat may partly explain the link.<sup>1</sup>
+      Eating with others often nudges us toward more structured meals: we slow down, cook more, and include greater variety, which is consistently associated with better cardiometabolic and brain outcomes.<sup>2</sup>
+      And because meals are also social rituals, they reinforce connection and belonging protective factors for long-term cognitive health.<sup>3</sup>
+    </p>
+
+    <div class="page-photo">
+      <img src="DSCF6969.JPG" alt="Guests gathered around the candlelit dinner table in conversation"/>
+    </div>
+
+    <div class="protocol-box">
+      <h4>The Practice</h4>
+      <p>Gather. Make eye contact. Speak about things that matter. The meal is the excuse, the connection is the medicine.</p>
+    </div>
+
+    <div class="reference">
+      <ol>
+        <li>Isa M, Ono K, Noguchi-Shinohara M, et al. (2025). Solitary eating is linked to reduced brain volume in cognitively unimpaired individuals and possible future cognitive decline. <em>npj Aging</em>, 11, 90. https://doi.org/10.1038/s41514-025-00284-3</li>
+        <li>Mosconi L. (2018). <em>Brain Food: The Surprising Science of Eating for Cognitive Power</em>. Avery.</li>
+        <li>Dunbar RIM. (2017). Breaking bread: the functions of social eating. <em>Adaptive Human Behavior and Physiology</em>, 3(3), 198–211. https://doi.org/10.1007/s40750-017-0061-4</li>
+      </ol>
+    </div>
+  </div>
+  <span class="page-number">2</span>
+</section>
+
+<!-- Element 2: Cephalic Phase -->
+<section class="page">
+  <div class="page-inner">
+    <div class="element-header">
+      <span class="element-number">02</span>
+      <span class="element-title">The Cephalic Phase</span>
+    </div>
+
+    <p>Seeing, smelling, and anticipating food triggers enzyme production and prepares the digestive tract.<sup>1</sup> This is called the cephalic phase which is the body's preparation for incoming nourishment.</p>
+    <p>If we're distracted or rushed, we blunt these cephalic-phase responses, reducing digestive readiness before the first bite.<sup>2</sup> Gastric acid, pancreatic enzymes, and bile production all begin in response to sensory cues, not the food itself.<sup>3</sup></p>
+
+    <div class="page-photo">
+      <img src="DSCF6944.JPG" alt="Guest smelling fresh sage leaves"/>
+      <p class="photo-caption">Engaging the senses before the meal</p>
+    </div>
+
+    <div class="protocol-box">
+      <h4>The Practice</h4>
+      <p>This is why we smell each dish before eating. This is why cooking happens nearby, so the scent reaches the table. This is why we pause to mindfully appreciate the space and the food.</p>
+    </div>
+
+    <div class="reference">
+      <ol>
+        <li>Power ML, Schulkin J. (2008). Anticipatory physiological regulation in feeding biology. <em>Appetite</em>, 50(2–3), 194–206. https://doi.org/10.1016/j.appet.2007.10.006</li>
+        <li>Stossier H. (2009). <em>The Viva Mayr Diet: 14 Days to a Flatter Stomach and a Younger You</em>. HarperCollins.</li>
+        <li>Feldman M, Richardson CT. (1986). Role of thought, sight, smell, and taste of food in the cephalic phase of gastric acid secretion in humans. <em>Gastroenterology</em>, 90(2), 428–433. https://doi.org/10.1016/0016-5085(86)90943-1</li>
+      </ol>
+    </div>
+  </div>
+  <span class="page-number">3</span>
+</section>
+
+<!-- Element 3: Parasympathetic Activation -->
+<section class="page">
+  <div class="page-inner">
+    <div class="element-header">
+      <span class="element-number">03</span>
+      <span class="element-title">Parasympathetic Activation</span>
+    </div>
+
+    <p>Digestion only happens fully in "rest and digest" mode.<sup>1</sup> When stressed, the sympathetic nervous system triggers "fight or flight" where blood leaves the gut, enzyme production slows, and absorption decreases. The meal passes through without full nourishment.</p>
+    <p>The vagus nerve is the main channel of parasympathetic activity. Slow breathing with extended exhales directly stimulates vagal tone and shifts the body into digestive readiness.<sup>2,3</sup></p>
+
+    <div class="protocol-box">
+      <h4>The Breath Protocol</h4>
+      <p>Inhale through the nose for 4 counts.</p>
+      <p>Exhale slowly through the mouth for 6-8 counts.</p>
+      <p>Repeat 5 times. Less than two minutes.</p>
+    </div>
+
+    <div class="page-photo">
+      <img src="DSCF6950.JPG" alt="Phones being surrendered into a basket"/>
+      <p class="photo-caption">Device surrender</p>
+    </div>
+
+    <div class="protocol-box">
+      <h4>Device Surrender</h4>
+      <p>Phones go into a box. Non-negotiable. The mere presence of a phone on the table — even face down, silent — reduces cognitive capacity and conversation quality.<sup>4</sup></p>
+    </div>
+
+    <div class="reference">
+      <ol>
+        <li>Palmer CM. (2022). <em>Brain Energy: A Revolutionary Breakthrough in Understanding Mental Health—and Improving Treatment for Anxiety, Depression, OCD, PTSD, and More</em>. BenBella Books.</li>
+        <li>Gerritsen RJS, Band GPH. (2018). Breath of life: the respiratory vagal stimulation model of contemplative activity. <em>Frontiers in Human Neuroscience</em>, 12, 397. https://doi.org/10.3389/fnhum.2018.00397</li>
+        <li>Amen DG. (2023). <em>Change Your Brain Every Day: Simple Daily Practices to Strengthen Your Mind, Memory, Mood, Focus, Energy, Habits, and Relationships</em>. Tyndale House Publishers.</li>
+        <li>Ward AF, Duke K, Gneezy A, Bos MW. (2017). Brain drain: the mere presence of one's own smartphone reduces available cognitive capacity. <em>Journal of the Association for Consumer Research</em>, 2(2), 140–154. https://doi.org/10.1086/691462</li>
+      </ol>
+    </div>
+  </div>
+  <span class="page-number">4</span>
+</section>
+
+<!-- Element 4: Fermented Foods -->
+<section class="page">
+  <div class="page-inner">
+    <div class="element-header">
+      <span class="element-number">04</span>
+      <span class="element-title">Fermented Foods</span>
+    </div>
+
+    <p>We begin with a small glass of beet kvass and a bite of sauerkraut. The meal also includes lacto-fermented cashew cream and miso.</p>
+
+    <p>The gut-brain axis is a bidirectional communication system. About 90-95% of the body's serotonin is produced and stored in the gut (mostly in enterochromaffin cells), though this peripheral serotonin doesn't directly cross the blood-brain barrier.<sup>1</sup> The microbiome also modulates inflammation and generates short-chain fatty acids that do cross into the brain.<sup>2</sup></p>
+
+    <p>Fermented foods introduce beneficial microbes and their metabolites directly. They also contain organic acids, particularly acetic acid, that blunt the glucose response to subsequent foods, stabilising blood sugar, which is itself protective for cognition.<sup>3,4,5</sup></p>
+
+    <div class="page-photo">
+      <img src="DSCF6929.JPG" alt="Beetroot carpaccio with fermented cashew cream and accompaniments"/>
+      <p class="photo-caption">Fermented starter (sauerkraut) and steamed beetroot carpaccio</p>
+    </div>
+
+    <div class="protocol-box">
+      <h4>Eat a fermented starter</h4>
+      <p>Start the meal with a ferment for modulating the glucose response and supporting gut microbiome health.</p>
+    </div>
+
+    <div class="reference">
+      <ol>
+        <li>Yano JM, Yu K, Donaldson GP, et al. (2015). Indigenous bacteria from the gut microbiota regulate host serotonin biosynthesis. <em>Cell</em>, 161(2), 264–276. https://doi.org/10.1016/j.cell.2015.02.047</li>
+        <li>Balasubramanian R, et al. (2024). Fermented foods: Harnessing psychobiotic potential in the gut–brain axis. <em>Neuroscience &amp; Biobehavioral Reviews</em>, 158, 105562. https://doi.org/10.1016/j.neubiorev.2024.105562</li>
+        <li>Östman E, Granfeldt Y, Persson L, Björck I. (2005). Vinegar supplementation lowers glucose and insulin responses and increases satiety after a bread meal in healthy subjects. <em>European Journal of Clinical Nutrition</em>, 59(9), 983–988. https://doi.org/10.1038/sj.ejcn.1602197</li>
+        <li>Means, Casey; Means, Calley. (2024). <em>Good Energy: The Surprising Connection Between Glucose, Metabolism, and Limitless Health</em>. Avery.</li>
+        <li>Longo V. (2018). <em>The Longevity Diet: Discover the New Science Behind Stem Cell Activation and Regeneration to Slow Aging, Fight Disease, and Optimize Weight</em>. Avery.</li>
+      </ol>
+    </div>
+  </div>
+  <span class="page-number">5</span>
+</section>
+
+<!-- Element 5: Warm Food -->
+<section class="page">
+  <div class="page-inner">
+    <div class="element-header">
+      <span class="element-number">05</span>
+      <span class="element-title">Warm Food, Gentle Cooking</span>
+    </div>
+
+    <p>All courses are served warm or at room temperature. No cold food. No ice water. This follows the principle practiced at Viva Mayr and in Traditional Chinese Medicine: cold food requires the body to expend energy warming it before digestion can proceed.<sup>1</sup></p>
+
+    <h3>Why we steam instead of roast</h3>
+    <p>High-heat dry cooking creates Advanced Glycation End Products (AGEs) through the Maillard reaction which is the browning that happens during roasting or frying. AGEs accumulate in tissues, increase oxidative stress and inflammation, and are associated with cardiometabolic risk; they are also investigated in neurodegeneration.<sup>2,3</sup></p>
+
+    <p>We can develop depth through fermentation and time rather than high heat by using elements like miso, black garlic and kombu. This is how Japanese and clinical wellness cuisines build flavour while preserving nutrients and avoiding inflammatory compounds.</p>
+
+    <div class="page-photo">
+      <img src="DSCF6918.JPG" alt="Jerusalem artichoke with king oyster, sesame, and nori"/>
+      <p class="photo-caption">Depth through fermentation using miso, not high heat</p>
+    </div>
+
+    <div class="protocol-box">
+      <h4>Cooking Methods</h4>
+      <p>Steaming preserves nutrients and avoids AGE formation.</p>
+      <p>Blanching keeps vegetables bright and digestible.</p>
+      <p>Fermented ingredients provide umami without browning or charring.</p>
+    </div>
+
+    <div class="reference">
+      <ol>
+        <li>Stossier H. (2009). <em>The Viva Mayr Diet: 14 Days to a Flatter Stomach and a Younger You</em>. HarperCollins.</li>
+        <li>Uribarri J, Woodruff S, Goodman S, et al. (2010). Advanced glycation end products in foods and a practical guide to their reduction in the diet. <em>Journal of the American Dietetic Association</em>, 110(6), 911–916.e12. https://doi.org/10.1016/j.jada.2010.03.018</li>
+        <li>Bredesen D. (2017). <em>The End of Alzheimer's: The First Program to Prevent and Reverse Cognitive Decline</em>. Avery.</li>
+      </ol>
+    </div>
+  </div>
+  <span class="page-number">6</span>
+</section>
+
+<!-- Element 6: Chewing -->
+<section class="page">
+  <div class="page-inner">
+    <div class="element-header">
+      <span class="element-number">06</span>
+      <span class="element-title">Chewing</span>
+    </div>
+
+    <p>Chewing is the only part of digestion under conscious control.<sup>1</sup></p>
+    <p>Digestion begins in the mouth. Salivary amylase starts breaking down starches. Mechanical breakdown increases surface area for enzymes. Chewing also sends signals to the brain that food is being consumed, triggering satiety hormones.</p>
+    <p>A systematic review found that most studies reported improvements in attention and cognitive performance with chewing.<sup>2</sup></p>
+
+    <div class="page-photo">
+      <img src="DSCF6916.JPG" alt="Buckwheat with pomegranate and fresh herbs"/>
+      <p class="photo-caption">Buckwheat: texture that demands chewing mindfully</p>
+    </div>
+
+    <div class="protocol-box">
+      <h4>The Practice</h4>
+      <p>Viva Mayr prescribes 40-60 chews per bite.<sup>1</sup></p>
+      <p>A more reachable goal can be to chew until the food is liquid.</p>
+      <p>Put down utensils between bites.</p>
+      <p>The dishes in this menu require chewing like buckwheat, king oyster, nuts, lentils, vegetables.</p>
+    </div>
+
+    <div class="reference">
+      <ol>
+        <li>Stossier H. (2009). <em>The Viva Mayr Diet</em>. HarperCollins.</li>
+        <li>Hirano Y, Onozuka M. (2015). Chewing and attention: a positive effect on sustained attention. <em>BioMed Research International</em>, 2015, 367026. https://doi.org/10.1155/2015/367026</li>
+      </ol>
+    </div>
+  </div>
+  <span class="page-number">7</span>
+</section>
+
+<!-- Ingredients: Page 1 -->
+<section class="page">
+  <div class="page-inner">
+    <div class="element-header">
+      <span class="element-number">07</span>
+      <span class="element-title">Ingredients (1/2)</span>
+    </div>
+
+    <p>Each ingredient is selected for specific cognitive mechanisms.<sup>1,2,3</sup></p>
+
+    <div class="ingredient-section">
+      <p class="ingredient-category">Fermentation</p>
+
+      <div class="ingredient">
+        <p class="ingredient-name">Beetroot (kvass + carpaccio)</p>
+        <p class="ingredient-benefit">Dietary nitrates increase cerebral blood flow<sup>4</sup>; rich in betalains (antioxidants).</p>
+      </div>
+
+      <div class="ingredient">
+        <p class="ingredient-name">Sauerkraut</p>
+        <p class="ingredient-benefit">A fermented starter: acids + microbial metabolites that can support gut–brain pathways.<sup>5</sup></p>
+      </div>
+
+      <div class="ingredient">
+        <p class="ingredient-name">Black Garlic</p>
+        <p class="ingredient-benefit">Deep umami via low-temperature aging; antioxidant activity; flavour without high heat browning.</p>
+      </div>
+
+      <div class="ingredient">
+        <p class="ingredient-name">Miso</p>
+        <p class="ingredient-benefit">Fermented umami; used gently to preserve aromas and fermentation-derived compounds.</p>
+      </div>
+    </div>
+
+    <div class="ingredient-section">
+      <p class="ingredient-category">Brain-Protective Compounds</p>
+
+      <div class="ingredient">
+        <p class="ingredient-name">Buckwheat</p>
+        <p class="ingredient-benefit">
+          One of the richest dietary sources of <strong>rutin</strong> (a plant flavonoid).
+          In lab models, rutin (and the related flavonoid quercetin) can interfere with
+          <strong>amyloid-β</strong> "fibril" formation.<sup>6</sup>
+          In an Alzheimer's-model animal study, a rutin-containing Tartary buckwheat fraction
+          improved memory and was associated with higher <strong>BDNF</strong> expression in the hippocampus.<sup>8,11</sup>
+        </p>
+      </div>
+
+      <div class="ingredient">
+        <p class="ingredient-name">King Oyster Mushroom</p>
+        <p class="ingredient-benefit">A dietary source of ergothioneine; low plasma ergothioneine is associated with cognitive and functional decline in an older memory-clinic cohort.<sup>7</sup></p>
+      </div>
+
+      <div class="ingredient">
+        <p class="ingredient-name">Jerusalem Artichoke</p>
+        <p class="ingredient-benefit">
+          Very high in <strong>inulin</strong>, a fermentable "prebiotic" fibre. Gut bacteria ferment it to produce <strong>SCFAs</strong> (short-chain fatty acids: acetate, propionate, and butyrate), supporting gut barrier function and inflammation regulation.<sup>9</sup>
+          Jerusalem artichoke is studied specifically for these microbiome and metabolite effects.<sup>10</sup>
+        </p>
+      </div>
+
+      <div class="ingredient">
+        <p class="ingredient-name">Red Cabbage + Green Beans</p>
+        <p class="ingredient-benefit">Colour + fibre: anthocyanin-rich pigments (red cabbage) and a crisp, low-browning vegetable base (green beans) that stays bright with gentle cooking.</p>
+      </div>
+
+      <div class="page-photo">
+        <img src="DSCF6913.JPG" alt="Red cabbage and green beans with chipotle flakes"/>
+        <p class="photo-caption">Anthocyanins and fibre in red cabbage, leeks and green blanched green beans</p>
+      </div>
+    </div>
+
+    <div class="reference">
+      <ol>
+        <li>Mosconi L. (2018). <em>Brain Food: The Surprising Science of Eating for Cognitive Power</em>. Avery.</li>
+        <li>Morris MC. (2017). <em>Diet for the MIND: The Latest Science on What to Eat to Prevent Alzheimer's and Cognitive Decline—From the Creator of the MIND Diet</em>. Little, Brown Spark.</li>
+        <li>Attia P, Gifford B. (2023). <em>Outlive: The Science and Art of Longevity</em>. Harmony.</li>
+        <li>Presley TD, Morgan AR, Bechtold E, et al. (2011). Acute effect of a high nitrate diet on brain perfusion in older adults. <em>Nitric Oxide</em>, 24(1), 34–42. https://doi.org/10.1016/j.niox.2010.10.002</li>
+        <li>Balasubramanian R, et al. (2024). Fermented foods: Harnessing psychobiotic potential in the gut–brain axis. <em>Neuroscience &amp; Biobehavioral Reviews</em>, 158, 105562. https://doi.org/10.1016/j.neubiorev.2024.105562</li>
+        <li>Jiménez-Aliaga K, Bermejo-Bescós P, Benedí J, Martín-Aragón S. (2011). Quercetin and rutin exhibit antiamyloidogenic and fibril-disaggregating effects in vitro and potent antioxidant activity in APPswe cells. <em>Life Sciences</em>, 89(25–26), 939–945. https://doi.org/10.1016/j.lfs.2011.09.023</li>
+        <li>Wu L-Y, et al. (2022). Low plasma ergothioneine predicts cognitive and functional decline in an elderly cohort attending memory clinics. <em>Antioxidants</em>, 11(9), 1717. https://doi.org/10.3390/antiox11091717</li>
+        <li>Choi JY, Lee JM, Lee DG, et al. (2015). The n-butanol fraction and rutin from Tartary buckwheat improve cognition and memory in an in vivo model of amyloid-β-induced Alzheimer's disease. <em>Journal of Medicinal Food</em>, 18(6), 631–641. https://doi.org/10.1089/jmf.2014.3292</li>
+        <li>Morrison DJ, Preston T. (2016). Formation of short chain fatty acids by the gut microbiota and their impact on human metabolism. <em>Gut Microbes</em>, 7(3), 189–200. https://doi.org/10.1080/19490976.2015.1134082</li>
+        <li>Sasaki H, et al. (2020). Combinatorial effects of soluble, insoluble, and organic fractions from Jerusalem artichoke on gut microbiota and metabolites. <em>Nutrients</em>, 12(7), 1951. https://doi.org/10.3390/nu12071951</li>
+        <li>Bathina S, Das UN. (2015). Brain-derived neurotrophic factor and its clinical implications. <em>Archives of Medical Science</em>, 11(6), 1164–1178. https://doi.org/10.5114/aoms.2015.56342</li>
+      </ol>
+    </div>
+  </div>
+  <span class="page-number">8</span>
+</section>
+
+<!-- Ingredients: Page 2 -->
+<section class="page">
+  <div class="page-inner">
+    <div class="element-header">
+      <span class="element-number">07</span>
+      <span class="element-title">Ingredients (2/2)</span>
+    </div>
+
+    <div class="ingredient-section">
+      <p class="ingredient-category">Neuroprotective Nutrients</p>
+
+      <div class="ingredient">
+        <p class="ingredient-name">Walnuts</p>
+        <p class="ingredient-benefit">Only nut with significant ALA omega-3; also contains polyphenols and melatonin-related compounds.<sup>1</sup></p>
+      </div>
+
+      <div class="ingredient">
+        <p class="ingredient-name">Hazelnuts</p>
+        <p class="ingredient-benefit">High in vitamin E, which helps protect neuronal membranes from oxidative damage.<sup>2</sup></p>
+      </div>
+
+      <div class="ingredient">
+        <p class="ingredient-name">Pumpkin Seeds</p>
+        <p class="ingredient-benefit">High in zinc, important for neuronal signalling and synaptic function.</p>
+      </div>
+
+      <div class="ingredient">
+        <p class="ingredient-name">Puy Lentils</p>
+        <p class="ingredient-benefit">Protein + fibre base; warm, grounding, and naturally "chewable" (supports satiety and pacing).</p>
+      </div>
+
+      <div class="ingredient">
+        <p class="ingredient-name">Cavolo Nero + Sage</p>
+        <p class="ingredient-benefit">Leafy greens contribute lutein; sage contains compounds that inhibit acetylcholinesterase (a target of some Alzheimer's drugs).<sup>3,4</sup></p>
+      </div>
+
+      <div class="page-photo">
+        <img src="DSCF6917.JPG" alt="Blanched cavolo nero with colorful vegetable ribbons"/>
+        <p class="photo-caption">Cavolo nero with pumpkin and black garlic sauce for depth and umami</p>
+      </div>
+    </div>
+
+    <div class="ingredient-section">
+      <p class="ingredient-category">Herbs &amp; Spices</p>
+
+      <p class="ingredient-benefit">
+        Herbs and spices matter for two reasons: (1) they intensify aroma, amplifying cephalic-phase signalling (digestive readiness), and (2) they concentrate plant bioactives (polyphenols + volatile compounds) that are widely studied for antioxidant and anti-inflammatory potential.<sup>5</sup>
+      </p>
+
+      <div class="ingredient">
+        <p class="ingredient-name">Dill + Parsley (chimichurri)</p>
+        <p class="ingredient-benefit">Fresh volatile oils + polyphenols: bright flavour without browning; increases sensory engagement.</p>
+      </div>
+
+      <div class="ingredient">
+        <p class="ingredient-name">Caraway + Black Sesame</p>
+        <p class="ingredient-benefit">Warm, aromatic seeds: deepen flavour while keeping cooking gentle.</p>
+      </div>
+
+      <div class="ingredient">
+        <p class="ingredient-name">Chipotle Flakes + Cinnamon</p>
+        <p class="ingredient-benefit">Warmth as a "digestive cue": spices shape pacing, salivation, and satisfaction with minimal culinary stress.</p>
+      </div>
+    </div>
+
+    <div class="ingredient-section">
+      <p class="ingredient-category">Polyphenols &amp; Pigments</p>
+
+      <div class="ingredient">
+        <p class="ingredient-name">Dark Chocolate (90%)</p>
+        <p class="ingredient-benefit">Cocoa flavanols are linked to vascular and cognitive outcomes via blood-flow pathways.</p>
+      </div>
+
+      <div class="ingredient">
+        <p class="ingredient-name">Red Cabbage</p>
+        <p class="ingredient-benefit">Anthocyanins (same pigment family as blueberries); a winter-friendly colour anchor.</p>
+      </div>
+    </div>
+
+    <div class="ingredient-section">
+      <p class="ingredient-category">Tea Timing</p>
+
+      <div class="ingredient">
+        <p class="ingredient-name">Yellow Tea (served after the walk)</p>
+        <p class="ingredient-benefit">
+          Tea polyphenols can inhibit non-heme iron absorption when taken with meals; for anyone managing low iron, the simplest move is to drink tea between meals — which is why we place yellow tea after the walk, at the end.<sup>6,7</sup>
+          (Yellow tea is often brewed gently; in practice that may reduce the inhibitory effect compared to very strong brews, but the timing strategy is the reliable lever.)
+        </p>
+      </div>
+    </div>
+
+    <div class="protocol-box">
+      <h4>On Soaking Grains &amp; Legumes</h4>
+      <p>Traditional cultures soaked, sprouted, or fermented grains and legumes before cooking. This can reduce some antinutrients (e.g., phytate) depending on method and time, and may improve mineral bioavailability.<sup>8,9,10</sup></p>
+      <p><strong>Buckwheat:</strong> Soak 4-6 hours, rinse, then cook.</p>
+      <p><strong>Puy lentils:</strong> Soak 4-6 hours (or overnight), drain, then boil 20-25 minutes. A full boil is needed to denature lectins.</p>
+    </div>
+
+    <div class="reference">
+      <ol>
+        <li>Chauhan A, Chauhan V. (2020). Beneficial effects of walnuts on cognition and brain health. <em>Nutrients</em>, 12(2), 550. https://doi.org/10.3390/nu12020550</li>
+        <li>Mangialasche F, Kivipelto M, Solomon A, et al. (2010). High plasma levels of vitamin E forms and reduced Alzheimer's disease risk in advanced age. <em>Journal of Alzheimer's Disease</em>, 20(4), 1029–1037. https://doi.org/10.3233/JAD-2010-091450</li>
+        <li>Akhondzadeh S, Noroozian M, Mohammadi M, et al. (2003). Salvia officinalis extract in the treatment of patients with mild to moderate Alzheimer's disease: a double blind, randomized and placebo-controlled trial. <em>Journal of Clinical Pharmacy and Therapeutics</em>, 28(1), 53–59. https://doi.org/10.1046/j.1365-2710.2003.00463.x</li>
+        <li>Johnson EJ. (2014). Role of lutein and zeaxanthin in visual and cognitive function throughout the lifespan. <em>Nutrition Reviews</em>, 72(9), 605–612. https://doi.org/10.1111/nure.12133</li>
+        <li>Opara EI, Chohan M. (2014). Culinary herbs and spices: their bioactive properties, the contribution of polyphenols and the challenges in deducting their true health benefits. <em>International Journal of Molecular Sciences</em>, 15(10), 19183–19202. https://doi.org/10.3390/ijms151019183</li>
+        <li>Zijp IM, Korver O, Tijburg LBM. (2000). Effect of tea and other dietary factors on iron absorption. <em>Critical Reviews in Food Science and Nutrition</em>, 40(5), 371–398. https://doi.org/10.1080/10408690091189194</li>
+        <li>Disler PB, Lynch SR, Charlton RW, et al. (1975). The effect of tea on iron absorption. <em>Gut</em>, 16(3), 193–200. https://doi.org/10.1136/gut.16.3.193</li>
+        <li>Vasconcelos IM, Oliveira JT. (2004). Antinutritional properties of plant lectins. <em>Toxicon</em>, 44(4), 385–403. https://doi.org/10.1016/j.toxicon.2004.05.005</li>
+        <li>Bredesen D. (2017). <em>The End of Alzheimer's: The First Program to Prevent and Reverse Cognitive Decline</em>. Avery.</li>
+        <li>Longo V. (2018). <em>The Longevity Diet: Discover the New Science Behind Stem Cell Activation and Regeneration to Slow Aging, Fight Disease, and Optimize Weight</em>. Avery.</li>
+      </ol>
+    </div>
+  </div>
+  <span class="page-number">9</span>
+</section>
+
+<!-- Element 8: Invisible Details -->
+<section class="page">
+  <div class="page-inner">
+    <div class="element-header">
+      <span class="element-number">08</span>
+      <span class="element-title">The Invisible Details</span>
+    </div>
+
+    <h3>Light</h3>
+    <p>Bright natural light from midday, reinforcing circadian message that this is peak metabolic time.<sup>1,2</sup> If natural light is insufficient: warm spectrum bulbs (2700K), candles on table.</p>
+
+    <h3>Temperature</h3>
+    <p>Slightly cool room (18-20°C). The body digests better when not working to cool itself.</p>
+
+    <h3>Sound</h3>
+    <p>Nature sounds or silence, naturalistic soundscapes are associated with different default-mode and mind-wandering patterns than artificial soundscapes.<sup>3</sup></p>
+
+    <h3>Scent</h3>
+    <p>Cooking happens nearby. Cephalic-phase ("anticipatory") responses begin before eating where smell and anticipation trigger digestive preparation.<sup>4</sup></p>
+
+    <div class="page-photo">
+      <img src="DSCF6911.JPG" alt="Table setting with candles, flowers, and warm lighting"/>
+      <p class="photo-caption">The invisible details in practice</p>
+    </div>
+
+    <h3>Warm Water</h3>
+    <p>No ice water on the table, warm or room temperature only. Very cold liquids can slow early gastric emptying in some conditions. Defaulting to room-temperature or warm drinks is a simple, low-risk choice.<sup>5</sup></p>
+
+    <h3>Tea Timing</h3>
+    <p>Yellow tea is served after the walk, at the end — partly because tea polyphenols can inhibit non-heme iron absorption when consumed with meals, and "between meals" timing is the simplest mitigation for at-risk groups.<sup>6,7</sup></p>
+
+    <div class="reference">
+      <ol>
+        <li>Wehrens SMT, et al. (2017). Meal timing regulates the human circadian system. <em>Current Biology</em>, 27(12), 1768–1775.e3. https://doi.org/10.1016/j.cub.2017.04.059</li>
+        <li>Panda S. (2018). <em>The Circadian Code: Lose Weight, Supercharge Your Energy, and Transform Your Health from Morning to Midnight</em>. Rodale Books.</li>
+        <li>Gould van Praag CD, et al. (2017). Mind-wandering and alterations to the default mode network. <em>Scientific Reports</em>, 7, 45273. https://doi.org/10.1038/srep45273</li>
+        <li>Power ML, Schulkin J. (2008). Anticipatory physiological regulation in feeding biology. <em>Appetite</em>, 50(2–3), 194–206. https://doi.org/10.1016/j.appet.2007.10.006</li>
+        <li>Sun WM, Houghton LA, Read NW, et al. (1988). Effect of meal temperature on gastric emptying of liquids in man. <em>Gut</em>, 29(3), 302–305. https://doi.org/10.1136/gut.29.3.302</li>
+        <li>Zijp IM, Korver O, Tijburg LBM. (2000). Effect of tea and other dietary factors on iron absorption. <em>Critical Reviews in Food Science and Nutrition</em>, 40(5), 371–398. https://doi.org/10.1080/10408690091189194</li>
+        <li>Disler PB, Lynch SR, Charlton RW, et al. (1975). The effect of tea on iron absorption. <em>Gut</em>, 16(3), 193–200. https://doi.org/10.1136/gut.16.3.193</li>
+      </ol>
+    </div>
+  </div>
+  <span class="page-number">10</span>
+</section>
+
+<!-- Timeline -->
+<section class="page">
+  <div class="page-inner">
+    <h2>Timeline</h2>
+    <p>A two-hour experience from arrival through outdoor walk.</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <p class="timeline-time">Arrival</p>
+        <p class="timeline-event">Devices surrendered into a box. Brief grounding moment.</p>
+      </div>
+
+      <div class="timeline-item">
+        <p class="timeline-time">-10 min</p>
+        <p class="timeline-event">To begin: small glass of beet kvass, bite of sauerkraut. Standing, moving gently. Room smells of cooking.</p>
+      </div>
+
+      <div class="timeline-item">
+        <p class="timeline-time">-5 min</p>
+        <p class="timeline-event">Seated. Guided 5-breath exercise. Brief gratitude. Transition to parasympathetic.</p>
+      </div>
+
+      <div class="timeline-item">
+        <p class="timeline-time">0:00</p>
+        <p class="timeline-event"><strong>First course:</strong> Steamed beetroot carpaccio + lacto-fermented cashew cream, black garlic, caraway, black sesame, dill.</p>
+      </div>
+
+      <div class="timeline-item">
+        <p class="timeline-time">0:20</p>
+        <p class="timeline-event"><strong>Second course:</strong> Hamaij Jerusalem artichoke. Red cabbage + green beans with chipotle flakes.</p>
+      </div>
+
+      <div class="timeline-item">
+        <p class="timeline-time">0:45</p>
+        <p class="timeline-event"><strong>Third course:</strong> Buckwheat risotto, steamed king oyster with miso glaze, toasted hazelnuts, nori, parsley chimichurri.</p>
+      </div>
+
+      <div class="timeline-item">
+        <p class="timeline-time">1:15</p>
+        <p class="timeline-event"><strong>Fourth course:</strong> Steamed Crown Prince squash with warm Puy lentils, olive oil and flaky salt · Blanched cavolo nero with lemon and toasted walnuts, sage, pumpkin seeds.</p>
+      </div>
+
+      <div class="timeline-item">
+        <p class="timeline-time">1:40</p>
+        <p class="timeline-event">Brief outdoor walk (10 minutes).</p>
+      </div>
+
+      <div class="timeline-item">
+        <p class="timeline-time">1:55</p>
+        <p class="timeline-event"><strong>To close:</strong> Yellow tea. Quiet moment.</p>
+      </div>
+    </div>
+
+    <div class="page-photo">
+      <img src="DSCF6933.JPG" alt="Straining tea through a funnel"/>
+      <p class="photo-caption">Mint tea, served warm during the meal</p>
+    </div>
+  </div>
+  <span class="page-number">11</span>
+</section>
+
+<!-- Menu Page -->
+<section class="page menu-page">
+  <div class="page-inner">
+    <h2>The Menu</h2>
+
+    <div class="menu-course">
+      <p class="menu-course-name">To Begin</p>
+      <p class="menu-course-desc">Beet kvass, sauerkraut bite</p>
+    </div>
+    <div class="menu-divider"></div>
+
+    <div class="menu-course">
+      <p class="menu-course-name">First Course</p>
+      <p class="menu-course-desc">Steamed beetroot carpaccio, lacto-fermented cashew cream, caraway, dill</p>
+    </div>
+    <div class="menu-divider"></div>
+
+    <div class="menu-course">
+      <p class="menu-course-name">Second Course</p>
+      <p class="menu-course-desc">Hamaij red cabbage, leeks, and green beans with chipotle flakes</p>
+    </div>
+    <div class="menu-divider"></div>
+
+    <div class="menu-course">
+      <p class="menu-course-name">Third Course</p>
+      <p class="menu-course-desc">Buckwheat risotto, steamed king oyster with miso glaze, toasted hazelnuts, purple sweet potato, parsley chimichurri</p>
+    </div>
+    <div class="menu-divider"></div>
+
+    <div class="menu-course">
+      <p class="menu-course-name">Fourth Course</p>
+      <p class="menu-course-desc">Steamed Crown Prince squash with warm Puy lentils, black garlic cashew cream, olive oil and flaky salt · Blanched cavolo nero with lemon and toasted walnuts, sage, pumpkin seeds</p>
+    </div>
+    <div class="menu-divider"></div>
+
+    <div class="menu-course">
+      <p class="menu-course-name">Fifth Course</p>
+      <p class="menu-course-desc">Warm cinnamon pears, hazelnut crumble, dark chocolate</p>
+    </div>
+    <div class="menu-divider"></div>
+
+    <div class="menu-course">
+      <p class="menu-course-name">To Close</p>
+      <p class="menu-course-desc">Yellow tea (served after the walk)</p>
+    </div>
+  </div>
+  <span class="page-number">12</span>
+</section>
+
+<!-- Walk Photo Spread -->
+<section class="page" style="background: var(--ink); min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 4rem 2rem;">
+  <p style="font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 3rem;">After the meal</p>
+  <h2 style="color: var(--paper); text-align: center; font-size: clamp(2rem, 6vw, 3.5rem); font-weight: 300; font-style: italic; margin-bottom: 3rem;">Walking through the park at dusk to aid digestion and glucose response</h2>
+  <div style="width: 100%; max-width: 900px; margin: 0 auto;">
+    <img src="DSCF6984.JPG" alt="Walking through the park at dusk" style="width: 100%; height: auto; display: block;"/>
+  </div>
+  <p style="color: var(--paper); opacity: 0.6; font-style: italic; font-size: 1.1rem; margin-top: 2.5rem; text-align: center;">Ten minutes of just movement and fresh air.</p>
+</section>
+
+<!-- Closing -->
+<section class="page closing-page">
+  <div class="page-inner">
+    <h2>The TLDR; Version</h2>
+    <ul class="closing-list">
+      <li><strong>Breathe</strong> before eating: 5 slow breaths, exhale longer than inhale (4 seconds inhale, 6 seconds exhale)</li>
+      <li><strong>Eat warm food</strong>: nothing cold, steamed not roasted</li>
+      <li><strong>Prepare your body for the meal</strong>: smell spices and herbs to prime digestion</li>
+      <li><strong>Include fermented foods</strong>: kvass, sauerkraut, miso</li>
+      <li><strong>Use herbs &amp; spices</strong>: aroma for digestion, depth without browning</li>
+      <li><strong>Chew thoroughly</strong>: until liquid</li>
+      <li><strong>Eat with others and be present</strong>: conversation, not screens</li>
+      <li><strong>Walk after</strong>: 10 minutes or at least 100 steps</li>
+      <li><strong>Tea last</strong>: yellow tea after the walk</li>
+    </ul>
+
+    <p>These changes, consistently applied, can transform digestion and cognition over time.</p>
+    <div class="cover-ornament" style="background: var(--forest);"></div>
+  </div>
+  <span class="page-number">13</span>
+</section>
+
+<!-- Closing Photo -->
+<section class="photo-page">
+  <img src="DSCF7002.JPG" alt="Group together at dusk after the walk"/>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <p class="footer-text">Designed for Sandbox · Winter 2025</p>
+</footer>
+
+<!-- Full References (1/2) -->
+<section class="page">
+  <div class="page-inner">
+    <h2>Full References (1/2)</h2>
+    <p class="meta-note">Consolidated and de-duplicated bibliography for the entire zine.</p>
+
+    <ol class="reference-list">
+      <li>Akhondzadeh S, Noroozian M, Mohammadi M, et al. (2003). Salvia officinalis extract in the treatment of patients with mild to moderate Alzheimer's disease: a double blind, randomized and placebo-controlled trial. <em>Journal of Clinical Pharmacy and Therapeutics</em>, 28(1), 53–59. https://doi.org/10.1046/j.1365-2710.2003.00463.x</li>
+      <li>Amen DG. (2023). <em>Change Your Brain Every Day: Simple Daily Practices to Strengthen Your Mind, Memory, Mood, Focus, Energy, Habits, and Relationships</em>. Tyndale House Publishers.</li>
+      <li>Attia P, Gifford B. (2023). <em>Outlive: The Science and Art of Longevity</em>. Harmony.</li>
+      <li>Balasubramanian R, et al. (2024). Fermented foods: Harnessing psychobiotic potential in the gut–brain axis. <em>Neuroscience &amp; Biobehavioral Reviews</em>, 158, 105562. https://doi.org/10.1016/j.neubiorev.2024.105562</li>
+      <li>Bathina S, Das UN. (2015). Brain-derived neurotrophic factor and its clinical implications. <em>Archives of Medical Science</em>, 11(6), 1164–1178. https://doi.org/10.5114/aoms.2015.56342</li>
+      <li>Bredesen D. (2017). <em>The End of Alzheimer's: The First Program to Prevent and Reverse Cognitive Decline</em>. Avery.</li>
+      <li>Chauhan A, Chauhan V. (2020). Beneficial effects of walnuts on cognition and brain health. <em>Nutrients</em>, 12(2), 550. https://doi.org/10.3390/nu12020550</li>
+      <li>Choi JY, Lee JM, Lee DG, et al. (2015). The n-butanol fraction and rutin from Tartary buckwheat improve cognition and memory in an in vivo model of amyloid-β-induced Alzheimer's disease. <em>Journal of Medicinal Food</em>, 18(6), 631–641. https://doi.org/10.1089/jmf.2014.3292</li>
+      <li>Disler PB, Lynch SR, Charlton RW, et al. (1975). The effect of tea on iron absorption. <em>Gut</em>, 16(3), 193–200. https://doi.org/10.1136/gut.16.3.193</li>
+      <li>Dunbar RIM. (2017). Breaking bread: the functions of social eating. <em>Adaptive Human Behavior and Physiology</em>, 3(3), 198–211. https://doi.org/10.1007/s40750-017-0061-4</li>
+      <li>Feldman M, Richardson CT. (1986). Role of thought, sight, smell, and taste of food in the cephalic phase of gastric acid secretion in humans. <em>Gastroenterology</em>, 90(2), 428–433. https://doi.org/10.1016/0016-5085(86)90943-1</li>
+      <li>Gerritsen RJS, Band GPH. (2018). Breath of life: the respiratory vagal stimulation model of contemplative activity. <em>Frontiers in Human Neuroscience</em>, 12, 397. https://doi.org/10.3389/fnhum.2018.00397</li>
+      <li>Gould van Praag CD, et al. (2017). Mind-wandering and alterations to the default mode network. <em>Scientific Reports</em>, 7, 45273. https://doi.org/10.1038/srep45273</li>
+      <li>Hirano Y, Onozuka M. (2015). Chewing and attention: a positive effect on sustained attention. <em>BioMed Research International</em>, 2015, 367026. https://doi.org/10.1155/2015/367026</li>
+      <li>Isa M, Ono K, Noguchi-Shinohara M, et al. (2025). Solitary eating is linked to reduced brain volume in cognitively unimpaired individuals and possible future cognitive decline. <em>npj Aging</em>, 11, 90. https://doi.org/10.1038/s41514-025-00284-3</li>
+      <li>Jiménez-Aliaga K, Bermejo-Bescós P, Benedí J, Martín-Aragón S. (2011). Quercetin and rutin exhibit antiamyloidogenic and fibril-disaggregating effects in vitro and potent antioxidant activity in APPswe cells. <em>Life Sciences</em>, 89(25–26), 939–945. https://doi.org/10.1016/j.lfs.2011.09.023</li>
+      <li>Johnson EJ. (2014). Role of lutein and zeaxanthin in visual and cognitive function throughout the lifespan. <em>Nutrition Reviews</em>, 72(9), 605–612. https://doi.org/10.1111/nure.12133</li>
+      <li>Longo V. (2018). <em>The Longevity Diet: Discover the New Science Behind Stem Cell Activation and Regeneration to Slow Aging, Fight Disease, and Optimize Weight</em>. Avery.</li>
+      <li>Mangialasche F, Kivipelto M, Solomon A, et al. (2010). High plasma levels of vitamin E forms and reduced Alzheimer's disease risk in advanced age. <em>Journal of Alzheimer's Disease</em>, 20(4), 1029–1037. https://doi.org/10.3233/JAD-2010-091450</li>
+      <li>Means, Casey; Means, Calley. (2024). <em>Good Energy: The Surprising Connection Between Glucose, Metabolism, and Limitless Health</em>. Avery.</li>
+    </ol>
+  </div>
+  <span class="page-number">14</span>
+</section>
+
+<!-- Full References (2/2) -->
+<section class="page">
+  <div class="page-inner">
+    <h2>Full References (2/2)</h2>
+    <p class="meta-note">Continued.</p>
+
+    <ol class="reference-list" start="21">
+      <li>Morris MC. (2017). <em>Diet for the MIND: The Latest Science on What to Eat to Prevent Alzheimer's and Cognitive Decline—From the Creator of the MIND Diet</em>. Little, Brown Spark.</li>
+      <li>Morrison DJ, Preston T. (2016). Formation of short chain fatty acids by the gut microbiota and their impact on human metabolism. <em>Gut Microbes</em>, 7(3), 189–200. https://doi.org/10.1080/19490976.2015.1134082</li>
+      <li>Mosconi L. (2018). <em>Brain Food: The Surprising Science of Eating for Cognitive Power</em>. Avery.</li>
+      <li>Opara EI, Chohan M. (2014). Culinary herbs and spices: their bioactive properties, the contribution of polyphenols and the challenges in deducting their true health benefits. <em>International Journal of Molecular Sciences</em>, 15(10), 19183–19202. https://doi.org/10.3390/ijms151019183</li>
+      <li>Östman E, Granfeldt Y, Persson L, Björck I. (2005). Vinegar supplementation lowers glucose and insulin responses and increases satiety after a bread meal in healthy subjects. <em>European Journal of Clinical Nutrition</em>, 59(9), 983–988. https://doi.org/10.1038/sj.ejcn.1602197</li>
+      <li>Palmer CM. (2022). <em>Brain Energy: A Revolutionary Breakthrough in Understanding Mental Health—and Improving Treatment for Anxiety, Depression, OCD, PTSD, and More</em>. BenBella Books.</li>
+      <li>Panda S. (2018). <em>The Circadian Code: Lose Weight, Supercharge Your Energy, and Transform Your Health from Morning to Midnight</em>. Rodale Books.</li>
+      <li>Power ML, Schulkin J. (2008). Anticipatory physiological regulation in feeding biology. <em>Appetite</em>, 50(2–3), 194–206. https://doi.org/10.1016/j.appet.2007.10.006</li>
+      <li>Presley TD, Morgan AR, Bechtold E, et al. (2011). Acute effect of a high nitrate diet on brain perfusion in older adults. <em>Nitric Oxide</em>, 24(1), 34–42. https://doi.org/10.1016/j.niox.2010.10.002</li>
+      <li>Sasaki H, et al. (2020). Combinatorial effects of soluble, insoluble, and organic fractions from Jerusalem artichoke on gut microbiota and metabolites. <em>Nutrients</em>, 12(7), 1951. https://doi.org/10.3390/nu12071951</li>
+      <li>Stossier H. (2009). <em>The Viva Mayr Diet: 14 Days to a Flatter Stomach and a Younger You</em>. HarperCollins.</li>
+      <li>Sun WM, Houghton LA, Read NW, et al. (1988). Effect of meal temperature on gastric emptying of liquids in man. <em>Gut</em>, 29(3), 302–305. https://doi.org/10.1136/gut.29.3.302</li>
+      <li>Uribarri J, Woodruff S, Goodman S, et al. (2010). Advanced glycation end products in foods and a practical guide to their reduction in the diet. <em>Journal of the American Dietetic Association</em>, 110(6), 911–916.e12. https://doi.org/10.1016/j.jada.2010.03.018</li>
+      <li>Vasconcelos IM, Oliveira JT. (2004). Antinutritional properties of plant lectins. <em>Toxicon</em>, 44(4), 385–403. https://doi.org/10.1016/j.toxicon.2004.05.005</li>
+      <li>Ward AF, Duke K, Gneezy A, Bos MW. (2017). Brain drain: the mere presence of one's own smartphone reduces available cognitive capacity. <em>Journal of the Association for Consumer Research</em>, 2(2), 140–154. https://doi.org/10.1086/691462</li>
+      <li>Wehrens SMT, et al. (2017). Meal timing regulates the human circadian system. <em>Current Biology</em>, 27(12), 1768–1775.e3. https://doi.org/10.1016/j.cub.2017.04.059</li>
+      <li>Wu L-Y, et al. (2022). Low plasma ergothioneine predicts cognitive and functional decline in an elderly cohort attending memory clinics. <em>Antioxidants</em>, 11(9), 1717. https://doi.org/10.3390/antiox11091717</li>
+      <li>Yano JM, Yu K, Donaldson GP, et al. (2015). Indigenous bacteria from the gut microbiota regulate host serotonin biosynthesis. <em>Cell</em>, 161(2), 264–276. https://doi.org/10.1016/j.cell.2015.02.047</li>
+      <li>Zijp IM, Korver O, Tijburg LBM. (2000). Effect of tea and other dietary factors on iron absorption. <em>Critical Reviews in Food Science and Nutrition</em>, 40(5), 371–398. https://doi.org/10.1080/10408690091189194</li>
+    </ol>
+  </div>
+  <span class="page-number">15</span>
+</section>
+
+</body>
+</html>
